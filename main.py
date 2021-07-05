@@ -1,5 +1,5 @@
 import os
-from apiclient import discovery
+from googleapiclient import discovery
 from google.oauth2 import service_account
 from fastapi import FastAPI
 from pydantic import BaseModel
