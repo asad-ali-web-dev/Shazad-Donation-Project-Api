@@ -4,6 +4,7 @@ from google.oauth2 import service_account
 from fastapi import FastAPI
 from pydantic import BaseModel
 from fastapi.middleware.cors import CORSMiddleware
+from typing import Dict, Any
 
 app = FastAPI()
 
@@ -19,7 +20,7 @@ class Donation(BaseModel):
     values: list[list[str]]
 
 class UpdateDonation(BaseModel):
-    values: list[list[str]]
+    values: Dict[Dict[any]]
     target: str
 
 def authenticate():
