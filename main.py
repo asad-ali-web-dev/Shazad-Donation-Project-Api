@@ -48,7 +48,7 @@ def add_new_donation(donations: Donation):
         'values': donations.values
     }
     result = service.spreadsheets().values().append(
-    spreadsheetId=spreadsheet_id, range=donations.target,
+    spreadsheetId=spreadsheet_id, range=range_name,
     valueInputOption="USER_ENTERED", body=body).execute()
     
     return { 'msg': '{0} cells appended.'.format(result \
@@ -60,8 +60,8 @@ def update_data(donations: UpdateDonation):
     body = {
         'values': donations.values
     }
-    target = donations.target
-    result = service.spreadsheets().values().update(spreadsheetId=spreadsheet_id, range=f"Sheet1!{target}",valueInputOption="USER_ENTERED", body=body).execute()
+    target = f"Sheet1!{donations.target}"
+    result = service.spreadsheets().values().update(spreadsheetId=spreadsheet_id, range=target,valueInputOption="USER_ENTERED", body=body).execute()
     return { 'msg': '{0} cells updated.'.format(result.get('updatedCells')) }
 
 @app.post('/delete/donation={target}')
