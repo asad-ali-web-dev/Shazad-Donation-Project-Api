@@ -60,8 +60,7 @@ def update_data(donations: UpdateDonation):
     body = {
         'values': donations.values
     }
-    target = f"Sheet1!{donations.target}"
-    result = service.spreadsheets().values().update(spreadsheetId=spreadsheet_id, range=target,valueInputOption="USER_ENTERED", body=body).execute()
+    result = service.spreadsheets().values().update(spreadsheetId=spreadsheet_id, range=donations.target,valueInputOption="USER_ENTERED", body=body).execute()
     return { 'msg': '{0} cells updated.'.format(result.get('updatedCells')) }
 
 @app.post('/delete/donation={target}')
