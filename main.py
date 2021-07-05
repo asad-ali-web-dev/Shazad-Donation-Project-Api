@@ -48,7 +48,7 @@ def add_new_donation(donations: Donation):
         'values': donations.values
     }
     result = service.spreadsheets().values().append(
-    spreadsheetId=spreadsheet_id, range=range_name,
+    spreadsheetId=spreadsheet_id, range=donations.target,
     valueInputOption="USER_ENTERED", body=body).execute()
     
     return { 'msg': '{0} cells appended.'.format(result \
