@@ -20,7 +20,7 @@ class Donation(BaseModel):
     values: list[list[str]]
 
 class UpdateDonation(BaseModel):
-    values: Dict[Dict[any]]
+    values: Dict[Dict[Any, Any]]
     target: str
 
 def authenticate():
