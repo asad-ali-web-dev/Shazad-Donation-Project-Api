@@ -45,9 +45,9 @@ def get_donations():
 @app.get('/get/total/donations')
 def get_total_donations():
     result = service.spreadsheets().values().get(spreadsheetId=spreadsheet_id, range="D1").execute()
-    rows = result.get('values', [])
+    rows = result.get('values')
 
-    return rows
+    return { 'total': rows[0][0] }
 
 @app.post('/add/donation')
 def add_new_donation(donations: Donation):
